@@ -78,7 +78,7 @@ export async function getStaticProps({
       pages,
       story
     },
-    revalidate: 14400,
+    revalidate: 10,
   }
 }
 
@@ -106,7 +106,6 @@ export default function Home({
   return (
     <div>
       { components }
-      <Banner  />
       <Grid>
         {featured.slice(0, 3).map(({ node }, i) => (
           <ProductCard
@@ -119,7 +118,6 @@ export default function Home({
           />
         ))}
       </Grid>
-      <Hero />
       <HomeAllProductsGrid
         categories={categories}
         brands={brands}

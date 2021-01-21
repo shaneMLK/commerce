@@ -12,8 +12,8 @@ interface Props {
 }
 
 const Components: IComponents = {
-    'call_to_action': Banner
-
+    'call_to_action': Banner,
+    'feature_list': Hero,
 }
 
 const DynamicComponent: FC<Props> = ({ blok }) => {

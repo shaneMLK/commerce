@@ -12,7 +12,7 @@ const Head: FC = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="manifest" href="/site.webmanifest" key="site-manifest" />
         <script defer src={`//app.storyblok.com/f/storyblok-latest.js?t=${StoryblokService.token}`} type="text/javascript" />
-        <script defer type="text/javascript">var StoryblokCacheVersion = '${StoryblokService.getCacheVersion()}';</script>
+        <script defer type="text/javascript" dangerouslySetInnerHTML={{ __html: `var StoryblokCacheVersion = "${StoryblokService.getCacheVersion()}";` }} ></script>
       </NextHead>
     </>
   )

@@ -355,7 +355,7 @@ a, a:focus, a:active, a:hover {
 }
 
 a, a:focus, a:active {
-	color: rgb(63, 63, 63);
+	color: black;
 }
 
 a.active, a:hover {

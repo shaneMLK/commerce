@@ -73,17 +73,22 @@ const WishlistCard: FC<Props> = ({ item }) => {
         <div className="mb-4">
           <Text html={product.description} />
         </div>
-        <Button
-          aria-label="Add to Cart"
-          type="button"
-          className={
-            'py-1 px-3 border border-secondary rounded-md shadow-sm hover:bg-primary-hover'
-          }
-          onClick={addToCart}
-          loading={loading}
-        >
-          Add to Cart
-        </Button>
+        {
+          product.inventory.isInStock ?
+            <Button
+              aria-label="Add to Cart"
+              type="button"
+              className={
+                'py-1 px-3 border border-secondary rounded-md shadow-sm hover:bg-primary-hover'
+              }
+              onClick={addToCart}
+              loading={loading}
+            >
+              Add to Cart
+          </Button>
+          :
+          <h4 className="text-red">Sorry, we are sold out</h4>
+        }
       </div>
       <div className="col-span-2 flex flex-col justify-between">
         <div className="flex justify-end font-bold">{price}</div>

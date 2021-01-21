@@ -80,6 +80,9 @@ export const productInfoFragment = /* GraphQL */ `
         }
       }
     }
+    inventory {
+      isInStock
+    }
     localeMeta: metafields(namespace: $locale, keys: ["name", "description"])
       @include(if: $hasLocale) {
       edges {

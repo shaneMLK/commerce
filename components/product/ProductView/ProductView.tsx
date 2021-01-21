@@ -140,16 +140,20 @@ const ProductView: FC<Props> = ({ product }) => {
             </div>
           </section>
           <div>
-            <Button
-              aria-label="Add to Cart"
-              type="button"
-              className={cn(s.button, 'button button-primary-light button-shadow')}
-              onClick={addToCart}
-              loading={loading}
-              disabled={!variant}
-            >
-              Add to Cart
-            </Button>
+            {
+              !product.inventory.isInStock ?
+                <h4 className="text-red">Sorry, we are sold out</h4> :
+                <Button
+                  aria-label="Add to Cart"
+                  type="button"
+                  className={cn(s.button, 'button button-primary-light button-shadow')}
+                  onClick={addToCart}
+                  loading={loading}
+                  disabled={!variant}
+                >
+                  Add to Cart
+              </Button>
+            }
           </div>
         </div>
 

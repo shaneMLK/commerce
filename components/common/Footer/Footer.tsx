@@ -22,7 +22,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
   const rootClassName = cn(className)
 
   return (
-    <footer className="footer-classic context-dark parallax-container" data-parallax-img="images/bg-footer-1-1920x725.jpg"><div className="material-parallax parallax"><img src="/images/bg-footer-1-1920x725.jpg" alt="" className="footer-classic-image" /></div>
+    <footer className="footer-classic context-dark parallax-container" data-parallax-img="/images/bg-footer-1-1920x725.jpg"><div className="material-parallax parallax"><img src="/images/bg-footer-1-1920x725.jpg" alt="" className="footer-classic-image" /></div>
       <div className="parallax-content dark-layout">
         <div className="section-sm">
           <div className="container">
@@ -76,7 +76,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
                   <h4>Contacts</h4>
                   <ul className="list-contacts">
                     <li className="centered"><span className="icon icon-lg icon-secondary mdi mdi-cellphone-android"></span><a className="link-phone" href="tel:#">+1 (708) 712–5879</a></li>
-                    <li className="centered"><span className="icon icon-lg icon-secondary mdi mdi-email-outline"></span><a href="mailto:#">info@demolink.org</a></li>
+                    <li className="centered"><span className="icon icon-lg icon-secondary mdi mdi-email-outline"></span><a href="mailto:#">shanemkunz@gmail.com</a></li>
                     <li><span className="icon icon-xl icon-secondary mdi mdi-map-marker"></span><a href="#">Illinois, USA, 150 Forest Ave</a></li>
                   </ul>
                 </div>

@@ -2,6 +2,10 @@ export type Maybe<T> = T | null
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K]
 }
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]?: Maybe<T[SubKey]> }
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]: Maybe<T[SubKey]> }
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string
@@ -91,6 +95,7 @@ export type BrandProductsArgs = {
   after?: Maybe<Scalars['String']>
   first?: Maybe<Scalars['Int']>
   last?: Maybe<Scalars['Int']>
+  hideOutOfStock?: Maybe<Scalars['Boolean']>
 }
 
 /** Brand */
@@ -246,6 +251,7 @@ export type CategoryProductsArgs = {
   after?: Maybe<Scalars['String']>
   first?: Maybe<Scalars['Int']>
   last?: Maybe<Scalars['Int']>
+  hideOutOfStock?: Maybe<Scalars['Boolean']>
 }
 
 /** Category */
@@ -430,6 +436,26 @@ export type DisplayField = {
   extendedDateFormat: Scalars['String']
 }
 
+/** Distance */
+export type Distance = {
+  __typename?: 'Distance'
+  /** Distance in specified length unit */
+  value: Scalars['Float']
+  /** Length unit */
+  lengthUnit: LengthUnit
+}
+
+/** Filter locations by the distance */
+export type DistanceFilter = {
+  /** Radius of search in length units specified in lengthUnit argument */
+  radius: Scalars['Float']
+  /** Signed decimal degrees without compass direction */
+  longitude: Scalars['Float']
+  /** Signed decimal degrees without compass direction */
+  latitude: Scalars['Float']
+  lengthUnit: LengthUnit
+}
+
 /** A form allowing selection and uploading of a file from the user's local computer. */
 export type FileUploadFieldOption = CatalogProductOption & {
   __typename?: 'FileUploadFieldOption'
@@ -490,6 +516,7 @@ export type InventoryLocationsArgs = {
   entityIds?: Maybe<Array<Scalars['Int']>>
   codes?: Maybe<Array<Scalars['String']>>
   typeIds?: Maybe<Array<Scalars['String']>>
+  distanceFilter?: Maybe<DistanceFilter>
   before?: Maybe<Scalars['String']>
   after?: Maybe<Scalars['String']>
   first?: Maybe<Scalars['Int']>
@@ -507,6 +534,18 @@ export type InventoryByLocations = {
   warningLevel: Scalars['Int']
   /** Indicates whether this product is in stock. */
   isInStock: Scalars['Boolean']
+  /** Distance between location and specified longitude and latitude */
+  locationDistance?: Maybe<Distance>
+  /** Location type id. */
+  locationEntityTypeId?: Maybe<Scalars['String']>
+  /** Location code. */
+  locationEntityCode: Scalars['String']
+}
+
+/** length unit */
+export enum LengthUnit {
+  Miles = 'Miles',
+  Kilometres = 'Kilometres',
 }
 
 /** A connection to a list of items. */
@@ -722,7 +761,7 @@ export type PriceRanges = {
 /** The various prices that can be set on a product. */
 export type Prices = {
   __typename?: 'Prices'
-  /** Calculated price of the product. */
+  /** Calculated price of the product.  Calculated price takes into account basePrice, salePrice, rules (modifier, option, option set) that apply to the product configuration, and customer group discounts.  It represents the in-cart price for a product configuration without bulk pricing rules. */
   price: Money
   /** Sale price of the product. */
   salePrice?: Maybe<Money>
@@ -1138,6 +1177,7 @@ export type Settings = {
   display: DisplayField
   /** Channel ID. */
   channelId: Scalars['Long']
+  tax?: Maybe<TaxDisplaySettings>
 }
 
 /** A site */
@@ -1179,6 +1219,7 @@ export type SiteProductsArgs = {
   last?: Maybe<Scalars['Int']>
   ids?: Maybe<Array<Scalars['ID']>>
   entityIds?: Maybe<Array<Scalars['Int']>>
+  hideOutOfStock?: Maybe<Scalars['Boolean']>
 }
 
 /** A site */
@@ -1187,6 +1228,7 @@ export type SiteNewestProductsArgs = {
   after?: Maybe<Scalars['String']>
   first?: Maybe<Scalars['Int']>
   last?: Maybe<Scalars['Int']>
+  hideOutOfStock?: Maybe<Scalars['Boolean']>
 }
 
 /** A site */
@@ -1195,6 +1237,7 @@ export type SiteBestSellingProductsArgs = {
   after?: Maybe<Scalars['String']>
   first?: Maybe<Scalars['Int']>
   last?: Maybe<Scalars['Int']>
+  hideOutOfStock?: Maybe<Scalars['Boolean']>
 }
 
 /** A site */
@@ -1203,6 +1246,7 @@ export type SiteFeaturedProductsArgs = {
   after?: Maybe<Scalars['String']>
   first?: Maybe<Scalars['Int']>
   last?: Maybe<Scalars['Int']>
+  hideOutOfStock?: Maybe<Scalars['Boolean']>
 }
 
 /** A site */
@@ -1246,6 +1290,21 @@ export type SwatchOptionValue = CatalogProductOptionValue & {
 export type SwatchOptionValueImageUrlArgs = {
   width: Scalars['Int']
   height?: Maybe<Scalars['Int']>
+}
+
+export type TaxDisplaySettings = {
+  __typename?: 'TaxDisplaySettings'
+  /** Tax display setting for Product Details Page. */
+  pdp: TaxPriceDisplay
+  /** Tax display setting for Product List Page. */
+  plp: TaxPriceDisplay
+}
+
+/** Tax setting can be set included or excluded (Tax setting can also be set to both on PDP/PLP). */
+export enum TaxPriceDisplay {
+  Inc = 'INC',
+  Ex = 'EX',
+  Both = 'BOTH',
 }
 
 /** A single line text input field. */
@@ -1363,6 +1422,9 @@ export type VariantInventory = {
 /** Variant Inventory */
 export type VariantInventoryByLocationArgs = {
   locationEntityIds?: Maybe<Array<Scalars['Int']>>
+  locationEntityCodes?: Maybe<Array<Scalars['String']>>
+  locationEntityTypeIds?: Maybe<Array<Scalars['String']>>
+  distanceFilter?: Maybe<DistanceFilter>
   before?: Maybe<Scalars['String']>
   after?: Maybe<Scalars['String']>
   first?: Maybe<Scalars['Int']>
@@ -1806,6 +1868,10 @@ export type ProductInfoFragment = { __typename?: 'Product' } & Pick<
         >
       >
     }
+    inventory: { __typename?: 'ProductInventory' } & Pick<
+      ProductInventory,
+      'isInStock'
+    >
     localeMeta: { __typename?: 'MetafieldConnection' } & {
       edges?: Maybe<
         Array<
@@ -1863,7 +1929,7 @@ export type GetAllProductPathsQuery = { __typename?: 'Query' } & {
 export type GetAllProductsQueryVariables = Exact<{
   hasLocale?: Maybe<Scalars['Boolean']>
   locale?: Maybe<Scalars['String']>
-  entityIds?: Maybe<Array<Scalars['Int']>>
+  entityIds?: Maybe<Array<Scalars['Int']> | Scalars['Int']>
   first?: Maybe<Scalars['Int']>
   products?: Maybe<Scalars['Boolean']>
   featuredProducts?: Maybe<Scalars['Boolean']>

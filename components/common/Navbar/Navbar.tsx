@@ -32,7 +32,7 @@ const Navbar: FC = () => {
               <div className="rd-navbar-panel">
                 <button className="rd-navbar-toggle toggle-original" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                 <div className="rd-navbar-brand">
-                  <a className="brand brand-logo" href="/"><img src="/images/logo-default-166x57.png" alt="" width="166" height="57" /></a><a className="brand brand-logo-stuck" href="index.html"><img src="images/logo-default-166x57.png" alt="" width="166" height="57" /></a>
+                  <a className="brand brand-logo pr-2" href="/"><img src="/images/logo-default-166x57.png" alt="" width="166" height="57" /></a><a className="brand brand-logo-stuck" href="/"><img src="/images/logo-default-166x57.png" alt="" width="166" height="57" /></a>
                     <div className="rd-navbar-brand-triangle"></div>
                 </div>
               </div>
@@ -46,10 +46,10 @@ const Navbar: FC = () => {
                   <Link href="/search">
                     <a className={s.link}>All Tea</a>
                   </Link>
-                  <Link href="/search?q=clothes">
+                  <Link href="/search?q=sleep">
                     <a className={s.link}>Sleep Teas</a>
                   </Link>
-                  <Link href="/search?q=accessories">
+                  <Link href="/search?q=energy">
                     <a className={s.link}>Energy Teas</a>
                   </Link>
                 </nav>

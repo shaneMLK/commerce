@@ -1,5 +1,6 @@
+import { useState, useEffect } from 'react'
 import rangeMap from '@lib/range-map'
-import { Layout } from '@components/common'
+import { Layout, DynamicComponent } from '@components/common'
 import { ProductCard } from '@components/product'
 import { Grid, Marquee, Hero, Banner } from '@components/ui'
 import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
@@ -9,11 +10,16 @@ import { getConfig } from '@framework/api'
 import getAllProducts from '@framework/api/operations/get-all-products'
 import getSiteInfo from '@framework/api/operations/get-site-info'
 import getAllPages from '@framework/api/operations/get-all-pages'
+import { SbEditableContent } from "storyblok-react";
+import StoryblokService from '@lib/storyblok'
 
 export async function getStaticProps({
+  params,
   preview,
   locale,
 }: GetStaticPropsContext) {
+  if (params) StoryblokService.setQuery(params)
+  if (preview) StoryblokService.devMode = true
   const config = getConfig({ locale })
 
   // Get Featured Products
@@ -60,6 +66,8 @@ export async function getStaticProps({
     }
   })()
 
+  const { data: { story } } = await StoryblokService.get('cdn/stories/home', {})
+
   return {
     props: {
       featured,
@@ -68,6 +76,7 @@ export async function getStaticProps({
       categories,
       brands,
       pages,
+      story
     },
     revalidate: 14400,
   }
@@ -81,10 +90,23 @@ export default function Home({
   brands,
   categories,
   newestProducts,
+  story
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const [storyContent, setStoryContent] = useState(story.content);
+  useEffect(
+    () => {
+      StoryblokService.initEditor({ content: storyContent, setContent: setStoryContent })
+    },
+  )
+
+  const components = storyContent.body.map((blok: SbEditableContent) => {
+    return (<DynamicComponent blok={blok} key={blok._uid} />)
+  });
+
   return (
     <div>
-      <Banner />
+      { components }
+      <Banner  />
       <Grid>
         {featured.slice(0, 3).map(({ node }, i) => (
           <ProductCard

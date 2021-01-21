@@ -74,9 +74,9 @@
 }
 
 .positionIndicatorActive .dot {
-  @apply bg-white;
+  background-color: gold;
 }
 
 .positionIndicatorActive:hover .dot {
-  @apply bg-white;
+  background-color: goldenrod;
 }

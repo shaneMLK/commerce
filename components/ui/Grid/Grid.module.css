@@ -1,5 +1,5 @@
 .root {
-  --row-height: calc(100vh - 88px);
+  --row-height: calc(80vh - 88px);
   @apply grid grid-cols-1 gap-0;
   min-height: var(--row-height);
 

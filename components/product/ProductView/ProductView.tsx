@@ -143,7 +143,7 @@ const ProductView: FC<Props> = ({ product }) => {
             <Button
               aria-label="Add to Cart"
               type="button"
-              className={s.button}
+              className={cn(s.button, 'button button-primary-light button-shadow')}
               onClick={addToCart}
               loading={loading}
               disabled={!variant}

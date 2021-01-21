@@ -1,21 +1,17 @@
 .root {
-  @apply bg-secondary text-accents-1 cursor-pointer inline-flex px-10 rounded-sm leading-6  transition ease-in-out duration-150 shadow-sm font-semibold text-center justify-center uppercase py-4 border border-transparent items-center;
+  @apply cursor-pointer inline-flex px-10 rounded-sm leading-6  transition ease-in-out duration-150 font-semibold text-center justify-center uppercase py-4 border border-transparent items-center;
 }
 
 .root:hover {
-  @apply bg-accents-0 text-primary border border-secondary;
+  @apply text-primary border border-secondary;
 }
 
 .root:focus {
   @apply shadow-outline outline-none;
 }
 
-.root[data-active] {
-  @apply bg-gray-600;
-}
-
 .loading {
-  @apply bg-accents-1 text-accents-3 border-accents-2 cursor-not-allowed;
+  @apply cursor-not-allowed;
 }
 
 .slim {

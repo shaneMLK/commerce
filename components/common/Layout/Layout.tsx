@@ -6,7 +6,7 @@ import React, { FC } from 'react'
 import { useUI } from '@components/ui/context'
 import { Navbar, Footer } from '@components/common'
 import { useAcceptCookies } from '@lib/hooks/useAcceptCookies'
-import { Sidebar, Button, Modal, LoadingDots } from '@components/ui'
+import { Sidebar, Button, Modal } from '@components/ui'
 import { CartSidebarView } from '@components/cart'
 
 import LoginView from '@components/auth/LoginView'
@@ -15,8 +15,8 @@ import type { Page } from '@framework/api/operations/get-all-pages'
 
 
 const Loading = () => (
-  <div className="w-80 h-80 flex items-center text-center justify-center p-3">
-    <LoadingDots />
+  <div>
+    . . .
   </div>
 )
 
@@ -58,6 +58,7 @@ const Layout: FC<Props> = ({ children, pageProps }) => {
     <CommerceProvider locale={locale}>
       <div className={cn(s.root)}>
         <Navbar />
+        <div className="NavSpacer"></div>
         <main className="fit">{children}</main>
         <Footer pages={pageProps.pages} />
 

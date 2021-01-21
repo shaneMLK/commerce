@@ -39,7 +39,7 @@ const CartSidebarView: FC = () => {
         [s.empty]: isEmpty,
       })}
     >
-      <header className="px-4 pt-6 pb-4 sm:px-6">
+      <header className="px-4 pt-12 pb-4 sm:px-6">
         <div className="flex items-start justify-between space-x-3">
           <div className="h-7 flex items-center">
             <button
@@ -125,7 +125,7 @@ const CartSidebarView: FC = () => {
                 <span>{total}</span>
               </div>
             </div>
-            <Button href="/checkout" Component="a" width="100%">
+                <Button href="/checkout" Component="a" width="100%">
               Proceed to Checkout
             </Button>
           </div>

@@ -16,48 +16,53 @@
     & .productTitle > span,
     & .productPrice,
     & .wishlistButton {
-      @apply bg-secondary text-secondary;
+      @apply text-white;
+      background-color: #2F855A;
     }
 
     &:nth-child(6n + 1) .productTitle > span,
     &:nth-child(6n + 1) .productPrice,
     &:nth-child(6n + 1) .wishlistButton {
-      @apply bg-violet text-white;
+      @apply text-white;
+      background-color: #2F855A;
     }
 
     &:nth-child(6n + 5) .productTitle > span,
     &:nth-child(6n + 5) .productPrice,
     &:nth-child(6n + 5) .wishlistButton {
-      @apply bg-blue text-white;
+      @apply text-white;
+      background-color: #2F855A;
     }
 
     &:nth-child(6n + 3) .productTitle > span,
     &:nth-child(6n + 3) .productPrice,
     &:nth-child(6n + 3) .wishlistButton {
-      @apply bg-pink text-white;
+      @apply text-white;
+      background-color: #2F855A;
     }
 
     &:nth-child(6n + 6) .productTitle > span,
     &:nth-child(6n + 6) .productPrice,
     &:nth-child(6n + 6) .wishlistButton {
-      @apply bg-cyan text-white;
+      @apply text-white;
+      background-color: #2F855A;
     }
   }
 
   &:nth-child(6n + 1) .squareBg {
-    @apply bg-violet;
+    background-color: #2F855A;
   }
 
   &:nth-child(6n + 5) .squareBg {
-    @apply bg-blue;
+    background-color: #2F855A;
   }
 
   &:nth-child(6n + 3) .squareBg {
-    @apply bg-pink;
+    background-color: #2F855A;
   }
 
   &:nth-child(6n + 6) .squareBg {
-    @apply bg-cyan;
+    background-color: #2F855A;
   }
 }
 
@@ -105,21 +110,24 @@
   letter-spacing: 0.4px;
 
   & span {
-    @apply py-4 px-6 bg-primary text-primary font-bold;
+    @apply py-4 px-6 text-primary font-bold;
     font-size: inherit;
     letter-spacing: inherit;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
+    background-color: #eefbee;
   }
 }
 
 .productPrice {
-  @apply py-4 px-6 bg-primary text-primary font-semibold inline-block text-sm leading-6;
+  @apply py-4 px-6 text-primary font-semibold inline-block text-sm leading-6;
   letter-spacing: 0.4px;
+  background-color: #eefbee;
 }
 
 .wishlistButton {
-  @apply w-10 h-10 flex ml-auto items-center justify-center bg-primary text-primary font-semibold  text-xs leading-6 cursor-pointer;
+  @apply w-10 h-10 flex ml-auto items-center justify-center text-primary font-semibold  text-xs leading-6 cursor-pointer;
+  background-color: #eefbee;
 }
 
 .imageContainer {

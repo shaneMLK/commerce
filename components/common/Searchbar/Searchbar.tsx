@@ -19,7 +19,7 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
     () => (
       <div
         className={cn(
-          'relative text-sm bg-accents-1 text-base w-full transition-colors duration-150',
+          'relative text-sm text-base mx-4 float-right w-1/2 transition-colors duration-150 border-solid border-2 border-gray-500 rounded-md',
           className
         )}
       >
@@ -29,7 +29,7 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
         <input
           id={id}
           className={s.input}
-          placeholder="Search for products..."
+          placeholder="Search..."
           defaultValue={router.query.q}
           onKeyUp={(e) => {
             e.preventDefault()

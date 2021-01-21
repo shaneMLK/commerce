@@ -13,16 +13,16 @@ const Avatar: FC<Props> = ({}) => {
 
   useEffect(() => {
     if (ref && ref.current) {
-      ref.current.style.backgroundImage = `linear-gradient(140deg, ${bg[0]}, ${bg[1]} 100%)`
+      //ref.current.style.backgroundImage = `linear-gradient(140deg, ${bg[0]}, ${bg[1]} 100%)`
     }
   }, [bg])
 
   return (
     <div
       ref={ref}
-      className="inline-block h-8 w-8 rounded-full border-2 border-primary hover:border-secondary focus:border-secondary transition linear-out duration-150"
+      className="inline-block h-8 w-8"
     >
-      {/* Add an image - We're generating a gradient as placeholder  <img></img> */}
+      <img src="/images/user-icon.png" />
     </div>
   )
 }

@@ -1,16 +1,16 @@
 {
-  "title": "ACME Storefront | Powered by Next.js Commerce",
-  "titleTemplate": "%s - ACME Storefront",
-  "description": "Next.js Commerce -> https://www.nextjs.org/commerce",
+  "title": "The Tea Oracle Store",
+  "titleTemplate": "%s - Tea Oracle",
+  "description": "The Tea Oracle Store, where the healthiest organic teas are sold.",
   "openGraph": {
     "type": "website",
     "locale": "en_IE",
-    "url": "https://nextjs.org/commerce",
-    "site_name": "Next.js Commerce"
+    "url": "https://the-tea-oracle.com",
+    "site_name": "The Tea Oracle"
   },
   "twitter": {
-    "handle": "@nextjs",
-    "site": "@nextjs",
+    "handle": "@theteaoracle",
+    "site": "@theteaoracle",
     "cardType": "summary_large_image"
   }
 }

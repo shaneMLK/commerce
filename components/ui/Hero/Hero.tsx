@@ -11,26 +11,50 @@ interface Props {
 
 const Hero: FC<Props> = ({ headline, description }) => {
   return (
-    <div className="bg-black">
-      <Container>
-        <div className={s.root}>
-          <h2 className="text-4xl leading-10 font-extrabold text-white sm:text-5xl sm:leading-none sm:tracking-tight lg:text-6xl">
-            {headline}
-          </h2>
-          <div className="flex flex-col justify-between">
-            <p className="mt-5 text-xl leading-7 text-accent-2 text-white">
-              {description}
-            </p>
-            <Link href="/blog">
-              <a className="text-white pt-3 font-bold hover:underline flex flex-row cursor-pointer w-max-content">
-                Read it here
-                <RightArrow width="20" heigh="20" className="ml-1" />
-              </a>
-            </Link>
+    <section className="section section-box-services-full-width context-dark">
+      <div className="row no-gutters">
+        <div className="col-sm-6 col-lg-3">
+          <div className="box-services-full-width">
+            <div className="box-services-full-width-inner">
+              <div className="box-services-full-width-image"><img src="images/icon-1.png" alt="" />
+                      </div>
+                <h4>Teaware &amp; Accessories</h4>
+                <p>At our shop, you can purchase different kinds of teaware and accessories for your tea drinking pleasure.</p>
+              </div><a className="box-services-full-width-button" href="about-tea.html">Read More</a>
+            </div>
           </div>
-        </div>
-      </Container>
-    </div>
+          <div className="col-sm-6 col-lg-3">
+            <div className="box-services-full-width">
+              <div className="box-services-full-width-inner">
+                <div className="box-services-full-width-image"><img src="/images/icon-2.png" alt="" />
+                      </div>
+                  <h4>Tea Collections</h4>
+                  <p>We have a regularly updated range of tea collections for true tea lovers. All teas are freshly packed and instantly delivered.</p>
+                </div><a className="box-services-full-width-button" href="about-tea.html">Read More</a>
+              </div>
+            </div>
+            <div className="col-sm-6 col-lg-3">
+              <div className="box-services-full-width">
+                <div className="box-services-full-width-inner">
+                  <div className="box-services-full-width-image"><img src="images/icon-3.png" alt="" />
+                      </div>
+                    <h4>Tea Gifts</h4>
+                    <p>Looking for a gift that a real fan of tea will appreciate? You can find anything tea-related on our website.</p>
+                  </div><a className="box-services-full-width-button" href="about-tea.html">Read More</a>
+                </div>
+              </div>
+              <div className="col-sm-6 col-lg-3">
+                <div className="box-services-full-width">
+                  <div className="box-services-full-width-inner">
+                    <div className="box-services-full-width-image"><img src="images/icon-4.png" alt="" />
+                      </div>
+                      <h4>Tea Infusers</h4>
+                      <p>Simplify the process of making perfect tea with one of our tea infusers that are reasonably priced and creative. </p>
+                    </div><a className="box-services-full-width-button" href="about-tea.html">Read More</a>
+                  </div>
+                </div>
+              </div>
+      </section>
   )
 }
 

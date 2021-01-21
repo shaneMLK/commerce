@@ -1,3 +1,7 @@
 .root {
   @apply fixed inset-0 overflow-hidden h-full z-50;
 }
+
+.sidebar{
+  background-color: #c6f6d5;
+}

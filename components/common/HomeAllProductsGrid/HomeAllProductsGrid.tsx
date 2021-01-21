@@ -33,7 +33,7 @@ const Head: FC<Props> = ({ categories, brands, newestProducts }) => {
           <ul className="">
             <li className="py-1 text-base font-bold tracking-wide">
               <Link href={getDesignerPath('')}>
-                <a>All Designers</a>
+                <a>All Brands</a>
               </Link>
             </li>
             {brands.flatMap(({ node }: any) => (

@@ -18,7 +18,7 @@ const Hero: FC<Props> = ({ blok }) => {
         <div className="row no-gutters">
           {blok && blok.body ?
             blok.body.map((feature:any) =>
-              <div className="col-sm-6 col-lg-3">
+              <div className="col-sm-6 col-lg-3" key={feature._uid}>
                 <div className="box-services-full-width">
                   <div className="box-services-full-width-inner">
                     <div className="box-services-full-width-image">

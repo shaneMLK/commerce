@@ -4,21 +4,18 @@ import s from './Layout.module.css'
 import { useRouter } from 'next/router'
 import React, { FC } from 'react'
 import { useUI } from '@components/ui/context'
-import { Navbar, Footer } from '@components/common'
+import { Navbar, Footer, FeatureBar } from '@components/common'
 import { useAcceptCookies } from '@lib/hooks/useAcceptCookies'
-import { Sidebar, Button, Modal } from '@components/ui'
+import { Sidebar, Button, Modal, LoadingDots } from '@components/ui'
 import { CartSidebarView } from '@components/cart'
 
 import LoginView from '@components/auth/LoginView'
 import { CommerceProvider } from '@framework'
 import type { Page } from '@framework/api/operations/get-all-pages'
+import StoryblokService from '@lib/storyblok'
 
 
-const Loading = () => (
-  <div>
-    . . .
-  </div>
-)
+const Loading = () => <LoadingDots />
 
 const dynamicProps = {
   loading: () => <Loading />,
@@ -30,10 +27,6 @@ const SignUpView = dynamic(
 )
 const ForgotPassword = dynamic(
   () => import('@components/auth/ForgotPassword'),
-  dynamicProps
-)
-const FeatureBar = dynamic(
-  () => import('@components/common/FeatureBar'),
   dynamicProps
 )
 

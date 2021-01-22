@@ -24,14 +24,14 @@ const Banner: FC<Props> = ({ blok }) => {
                 <h2><span className="fadeGel animated block">{blok ? blok.headline : ''}</span></h2>
                 <h4 className="fadeGel animated">{blok ? blok.headline_2 : ''}</h4>
                 <div className="text-decorate fadeGel animated" dangerouslySetInnerHTML={{ __html: renderedText }}></div>
-                <p>
+                <div>
                   {blok && blok.buttons ? blok.buttons.map((b: any) =>
-                    <>
-                      <Link key={b._uid} href={b.link.url}><a className="button button-primary-light fadeInUp animated">{b.text}</a></Link>
+                    <div key={b._uid}>
+                      <Link key={b._uid} href={b.link ? b.link.url : '/'}><a className="button button-primary-light fadeInUp animated">{b.text}</a></Link>
                       <br />
-                    </>
+                    </div>
                   ) : ''}
-                </p>
+                </div>
               </div>
             </div>
           </div>

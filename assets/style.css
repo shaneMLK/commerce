@@ -3494,7 +3494,7 @@ p + .list-marked {
 * Images
 */
 img {
-	display: inline-block;
+	display: inline-block !important;
 	max-width: 100%;
 	height: auto;
 }

@@ -14,7 +14,7 @@ class StoryblokService {
     token: string | undefined
     constructor() {
         this.devMode = false //  True loads draft
-        this.token = process.env.STORYBLOK_TOKEN
+        this.token = process.env.NEXT_PUBLIC_STORYBLOK_TOKEN
         this.client = new StoryblokClient({
             accessToken: this.token,
             cache: {

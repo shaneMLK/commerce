@@ -38,15 +38,14 @@ const ProductView: FC<Props> = ({ product }) => {
     size: null,
     color: null,
   })
-  const variant =
-    getCurrentVariant(product, choices) || product.variants.edges?.[0]
+  const variant = getCurrentVariant(product, choices)
 
   const addToCart = async () => {
     setLoading(true)
     try {
       await addItem({
         productId: product.entityId,
-        variantId: product.variants.edges?.[0]?.node.entityId!,
+        variantId: variant?.node.entityId!,
       })
       openSidebar()
       setLoading(false)
@@ -160,7 +159,7 @@ const ProductView: FC<Props> = ({ product }) => {
         <WishlistButton
           className={s.wishlistButton}
           productId={product.entityId}
-          variant={product.variants.edges?.[0]!}
+          variant={variant!}
         />
       </div>
     </Container>

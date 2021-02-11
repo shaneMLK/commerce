@@ -1,9 +1,11 @@
-import type { GetStaticPropsContext } from 'next'
+import { useState, useEffect } from 'react'
+import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { getConfig } from '@framework/api'
 import getAllPages from '@framework/api/operations/get-all-pages'
-import { Layout } from '@components/common'
+import { Layout, DynamicComponent } from '@components/common'
 import { Container } from '@components/ui'
 import StoryblokService from '@lib/storyblok'
+import { SbEditableContent } from "storyblok-react"
 
 export async function getStaticProps({
   params,
@@ -14,12 +16,26 @@ export async function getStaticProps({
   if (preview) StoryblokService.devMode = true
   const config = getConfig({ locale })
   const { pages } = await getAllPages({ config, preview })
+
+  const { data: { story } } = await StoryblokService.get('cdn/stories/articles', {})
+
   return {
-    props: { pages },
+    props: { pages, story },
   }
 }
 
-export default function Blog() {
+export default function Blog({ story }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const [storyContent, setStoryContent] = useState(story.content);
+  useEffect(
+    () => {
+      StoryblokService.initEditor({ content: storyContent, setContent: setStoryContent })
+    },
+  )
+
+  const components = storyContent.body.map((blok: SbEditableContent) => {
+    return (<DynamicComponent blok={blok} key={blok._uid} />)
+  });
+
   return (
     <div className="pb-20">
       <div className="text-center pt-40 pb-56 bg-green">

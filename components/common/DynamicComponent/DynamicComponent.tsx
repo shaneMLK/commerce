@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Grid, Marquee, Hero, Banner } from '@components/ui'
+import { Grid, Marquee, Hero, Banner, Article } from '@components/ui'
 import { SbEditableContent } from "storyblok-react";
 import dashify from 'dashify'
 
@@ -14,6 +14,7 @@ interface Props {
 const Components: IComponents = {
     'call_to_action': Banner,
     'feature_list': Hero,
+    'articles': Article
 }
 
 const DynamicComponent: FC<Props> = ({ blok }) => {
